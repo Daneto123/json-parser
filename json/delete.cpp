@@ -6,7 +6,7 @@
  * @param path - думата която искаме да изтрием
  */ 
 
-void Json::deletefunc(string path){
+void Json::deletefunc(const string &path){
     
     for (int i = 0; i < fileContents.size(); i++){
         if(fileContents[i].get_key() == path){

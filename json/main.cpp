@@ -43,15 +43,14 @@
 // Командите save и saves да работят с произволен път, като записват в текущия или в нов файл обекта на дадения път, ако съществува. Ако <path> не е подаден, да се записва целият обект, който в момента е зареден в паметта.
 #include "json.cpp"
 #include "json.h"
-#include "create.cpp"//
+#include "create.cpp"
 #include "command.cpp"
-#include "move.cpp"//
-#include "print.cpp"//
-#include "save.cpp"//
-#include "set.cpp"//
+#include "move.cpp"
+#include "print.cpp"
+#include "save.cpp"
+#include "set.cpp"
 #include "validate.cpp"
 #include "delete.cpp"
-#include "exeption.cpp"
 
 
 int main(){
@@ -78,54 +77,48 @@ int main(){
     Command commands;
     Json json;
 
-    while(input != exit_command){
+    while(input != "exit"){
 
         string* words = split(input);
         string command = words[0];
 
-        if(command == open_command){
+        if(command == "open"){
 
-            string file_name = words[1];
-            commands.open(file_name);
+           all_read("experiment.json");
+           json.read_from_file("experiment.json");
 
-        }else if(command == close_command){
+        }else if(command == "close"){
 
             commands.close();
 
-        }else if(command == save_command){
+        }else if(command == "save"){
 
             commands.save();
 
-        }else if(command == save_as_command){
+        }else if(command == "save_as"){
 
             string file_name = words[1];
             commands.save_as(file_name);
 
-        }else if(command == help_command){
+        }else if(command == "help"){//validate experiment.json
 
             commands.help();
 
-        }else if(command == read_from_file){
-
-            all_read("experiment.json");
-            json.read_from_file("experiment.json");
-            //json.print_vector();
-
-        }else if(command == move_command){
+        }else if(command == "move"){
 
             string from_path = words[1];
             string to_path = words[2];
             json.move(from_path, to_path);
             json.save_to_file("expo.json");
 
-        }else if(command == print){
+        }else if(command == "print"){
 
             char* file_name = new char[words[1].length()+1];
             strcpy(file_name, words[1].c_str());
             json.print(file_name);
             delete[] file_name;
 
-        }else if(command == create){
+        }else if(command == "create"){
 
             string path = words[1];
             string word_for_create = words[2];
@@ -133,25 +126,31 @@ int main(){
             json.save_to_file("expo.json");
             //json.print_vector();
 
-        }else if(command == save){
+        }else if(command == "save_file"){
 
             string path = words[1];
             json.save(path);
 
-        }else if(command == set){
+        }else if(command == "save_as_file"){
+
+            string file_path = words[1];
+            string path = words[2];
+            json.save_as(file_path, path);
+
+        }else if(command == "replace"){
 
             string path = words[1];
             string word_for_repalce = words[2];
             json.set(path, word_for_repalce);
 
-        }else if(command == validate){
+        }else if(command == "validate"){
 
             char* file_name = new char[words[1].length()+1];
             strcpy(file_name, words[1].c_str());
             json.validate(file_name);
             delete[] file_name;
 
-        }else if(command == delete_command){
+        }else if(command == "delete"){
 
             string path = words[1];
             json.deletefunc(path);

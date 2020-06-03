@@ -7,7 +7,7 @@
  * @param word_for_replace - думата с която искаме да заменим
  */ 
 
-void Json::set(string path, string word_for_replace){
+void Json::set(const string &path, const string &word_for_replace){
 
     for (int i = 0; i < fileContents.size(); i++){
         if(fileContents[i].get_key() == path){

@@ -6,7 +6,7 @@
  * @param to_path - мястото където искаме да поставим редът
  */ 
 
-void Json::move(string from_path, string to_path){
+void Json::move(const string &from_path, const string &to_path){
     
     int from, to;
     for (int i = 0; i < fileContents.size(); i++){

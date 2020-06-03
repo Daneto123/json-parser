@@ -77,7 +77,7 @@ void Json::print_vector(){
  * @param file_path - името на фаелът който искаме да прочетем
  */
 
-void Json::save_to_file(string file_path){
+void Json::save_to_file(const string &file_path){
     
     fstream file;
     file.open(file_path);

@@ -55,14 +55,14 @@ public:
     void validate(const char* file_path);
     void print(const char* file_path);
     void search(const string &key);
-    void set(string path, string word_for_replace);
+    void set(const string &path, const string &word_for_replace);
     void create(const string &path, const string &word_for_create);
-    void deletefunc(string path);
-    void move(string from_path, string to_path);
-    void save(string path);
-    void saveas(string path);
+    void deletefunc(const string &path);
+    void move(const string &from_path, const string &to_path);
+    void save(const string &path);
+    void save_as(const string &file_path, const string &path);
     void read_from_file(const string &file_path);
     void print_vector();
-    void save_to_file(string file_path);
+    void save_to_file(const string &file_path);
 
 };
