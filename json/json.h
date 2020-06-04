@@ -9,44 +9,44 @@ const int char_buffer = 64;
 
 class Json_struct{
 private:
-    string key;
-    string value;
+    string _key;
+    string _value;
 public:
-    Json_struct() : key(""), value("") {}
-    Json_struct(const string &key, const string &value) : key(key), value(value) {}
-    Json_struct(const Json_struct &other) : key(other.key), value(other.value) {}
+    Json_struct() : _key(""), _value("") {}
+    Json_struct(const string &key, const string &value) : _key(key), _value(_value) {}
+    Json_struct(const Json_struct &other) : _key(other._key), _value(other._value) {}
     Json_struct& operator=(const Json_struct &other){
         if(this != &other){
-            key = other.key;
-            value = other.value; 
+            _key = other._key;
+            _value = other._value; 
         }
 
         return *this;
     }
 
-    void set_key(const string &key){this->key = key; }
-    void set_value(const string &value){this->value = value; }
+    void set_key(const string &key){this->_key = _key; }
+    void set_value(const string &value){this->_value = value; }
 
-    string get_key()const {return this->key; }
-    string get_value()const {return this->value; }
+    string get_key()const {return this->_key; }
+    string get_value()const {return this->_value; }
 
 };
 
 class Json : public Json_struct{
     friend class Json_struct;
 private:
-    vector<Json_struct> fileContents;
+    vector<Json_struct> file_contents;
 public:
 
-    Json() : fileContents() {}
+    Json() : file_contents() {}
 
-    Json(const vector<Json_struct> fileContents) : fileContents(fileContents) {}
+    Json(const vector<Json_struct> fileContents) : file_contents(file_contents) {}
 
-    Json(const Json &other) : fileContents(other.fileContents) {}
+    Json(const Json &other) : file_contents(other.file_contents) {}
         
     Json& operator=(const Json &other){
         if(this != &other){
-            fileContents = other.fileContents;
+            file_contents = other.file_contents;
         }
 
         return *this;

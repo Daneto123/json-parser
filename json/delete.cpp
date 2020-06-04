@@ -8,12 +8,12 @@
 
 void Json::deletefunc(const string &path){
     
-    for (int i = 0; i < fileContents.size(); i++){
-        if(fileContents[i].get_key() == path){
-            fileContents[i].set_key("");
+    for (int i = 0; i < file_contents.size(); i++){
+        if(file_contents[i].get_key() == path){
+            file_contents[i].set_key("");
             break;
-        }else if(fileContents[i].get_value() == path){
-            fileContents[i].set_value("");
+        }else if(file_contents[i].get_value() == path){
+            file_contents[i].set_value("");
         }
     }
 

@@ -9,12 +9,12 @@
 
 void Json::set(const string &path, const string &word_for_replace){
 
-    for (int i = 0; i < fileContents.size(); i++){
-        if(fileContents[i].get_key() == path){
-            fileContents[i].set_key(word_for_replace);
+    for (int i = 0; i < file_contents.size(); i++){
+        if(file_contents[i].get_key() == path){
+            file_contents[i].set_key(word_for_replace);
            //cout<<"namerih go";
-       }else if(fileContents[i].get_value() == path){
-           fileContents[i].set_value(word_for_replace);
+       }else if(file_contents[i].get_value() == path){
+           file_contents[i].set_value(word_for_replace);
        }
     } 
     

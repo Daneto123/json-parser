@@ -23,17 +23,17 @@ void Json::read_from_file(const string &file_path){
             if(check != "{" && check != "}," && check != "[" && check != "]," && check != "}"){
                 file>>value;
                 if(value != "{" && value != "[" && value != "}"){
-                    fileContents.push_back(Json_struct(check,value));
+                    file_contents.push_back(Json_struct(check,value));
                 }
             }else{
                 file>>key>>value;
                 if(key == "],"){
                     file>>words;
                     if(words != "[],"){
-                        fileContents.push_back(Json_struct(key,value));
+                        file_contents.push_back(Json_struct(key,value));
                     }
                 }else if(value != "["){
-                    fileContents.push_back(Json_struct(key,value));
+                    file_contents.push_back(Json_struct(key,value));
                 }
             }
         }
@@ -61,9 +61,9 @@ void all_read(const string &file_path){
 
 void Json::print_vector(){
 
-    for (int i = 0; i < fileContents.size(); i ++){
+    for (int i = 0; i < file_contents.size(); i ++){
         //cout<<;
-        cout << fileContents[i].get_key() << " " << fileContents[i].get_value() << endl;
+        cout << file_contents[i].get_key() << " " << file_contents[i].get_value() << endl;
     }  
 
     for (int i = 0; i < local_read.size(); i ++){
@@ -90,8 +90,8 @@ void Json::save_to_file(const string &file_path){
             }else if(local_read[k+1] == "{" || local_read[k+1] == "[" || local_read[k+1] == "[],"){
                 file<<local_read[k]<<" "<<local_read[k+1]<<endl;
                 k++;
-            }else if(local_read[k].find('"') != string::npos && count_vector <= fileContents.size()){
-                file<<" "<<fileContents[count_vector].get_key()<<" "<<fileContents[count_vector].get_value()<<endl;
+            }else if(local_read[k].find('"') != string::npos && count_vector <= file_contents.size()){
+                file<<" "<<file_contents[count_vector].get_key()<<" "<<file_contents[count_vector].get_value()<<endl;
                 count_vector++;
                 k ++;
             }
