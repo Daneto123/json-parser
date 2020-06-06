@@ -11,11 +11,15 @@ void Json::print(const char* file_path){
     input_stream.open(file_path, ios::in);
 
     if(input_stream.is_open()) {
-        char lineFromFile[100];
+        string lineFromFile;
         while(!input_stream.eof()) {
-            input_stream.getline(lineFromFile, 100);
+            getline(input_stream, lineFromFile);
             cout << lineFromFile << endl;
         }
+
         input_stream.close();
-    } 
+    }else{
+        cout<<"can't open the file"<<endl;
+    }
+
 }

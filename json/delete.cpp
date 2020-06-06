@@ -17,10 +17,5 @@ void Json::deletefunc(const string &path){
         }
     }
 
-    // for (size_t i = 0; i < size_of_vector; i++)
-    // {
-    //     cout<<fileContents[i].get_key()<<endl;
-    // }
-
     cout<<"successfuly removed"<<endl;
 }

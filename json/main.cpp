@@ -86,6 +86,7 @@ int main(){
 
            all_read("experiment.json");
            json.read_from_file("experiment.json");
+           cout<<"the file is succsessfully open"<<endl;
 
         }else if(command == "close"){
 
@@ -93,14 +94,14 @@ int main(){
 
         }else if(command == "save"){
 
-            commands.save();
+           json.save_to_file("expo.json");
 
         }else if(command == "save_as"){
 
             string file_name = words[1];
-            commands.save_as(file_name);
+            json.save_to_file(file_name);
 
-        }else if(command == "help"){//validate experiment.json
+        }else if(command == "help"){
 
             commands.help();
 
@@ -124,7 +125,6 @@ int main(){
             string word_for_create = words[2];
             json.create(path, word_for_create);
             json.save_to_file("expo.json");
-            //json.print_vector();
 
         }else if(command == "save_file"){
 
@@ -142,6 +142,7 @@ int main(){
             string path = words[1];
             string word_for_repalce = words[2];
             json.set(path, word_for_repalce);
+            json.save_to_file("expo.json");
 
         }else if(command == "validate"){
 
@@ -155,10 +156,10 @@ int main(){
             string path = words[1];
             json.deletefunc(path);
             json.save_to_file("expo.json");
-            //json.print_vector();
 
         }
 
+        delete[] words;
         getline(cin, input);
     }
 

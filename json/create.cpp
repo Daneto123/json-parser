@@ -9,7 +9,7 @@
 
 void Json::create(const string &path, const string &word_for_create){
 
-    string new_word;
+    string new_word = "";
 
     for (int i = 0; i < file_contents.size(); i++){
         if(file_contents[i].get_key() == path){

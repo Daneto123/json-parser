@@ -11,11 +11,11 @@ vector<string> local_read;
 
 void Json::read_from_file(const string &file_path){
 
-    ifstream file;
+    fstream file;
     file.open(file_path);
     if (file.is_open()){
 
-        string key = "", value = "", check = "", words = "";
+        string key = "", value = "", check = "", wordsss = "";
 
         while (!file.eof()){
 
@@ -25,24 +25,28 @@ void Json::read_from_file(const string &file_path){
                 if(value != "{" && value != "[" && value != "}"){
                     file_contents.push_back(Json_struct(check,value));
                 }
+
             }else{
+
                 file>>key>>value;
                 if(key == "],"){
-                    file>>words;
-                    if(words != "[],"){
+                    file>>wordsss;
+                    if(wordsss != "[],"){
                         file_contents.push_back(Json_struct(key,value));
                     }
                 }else if(value != "["){
                     file_contents.push_back(Json_struct(key,value));
                 }
+
             }
         }
     }else{
-        cout<<"error";
+        cout<<"can't open the file"<<endl;
     }
 }
 
 void all_read(const string &file_path){
+
     ifstream file;
     file.open(file_path);
     if (file.is_open()){
@@ -53,6 +57,7 @@ void all_read(const string &file_path){
             local_read.push_back(word);
         }
     }
+    
 }
 
 /**
@@ -62,12 +67,10 @@ void all_read(const string &file_path){
 void Json::print_vector(){
 
     for (int i = 0; i < file_contents.size(); i ++){
-        //cout<<;
         cout << file_contents[i].get_key() << " " << file_contents[i].get_value() << endl;
     }  
 
     for (int i = 0; i < local_read.size(); i ++){
-        //cout<<;
         cout << local_read[i] << endl;
     }  
 }
@@ -98,13 +101,13 @@ void Json::save_to_file(const string &file_path){
         }
         file.close();
     }else{
-        cout<<"error";
+        cout<<"can't open the file"<<endl;
     } 
 }
 
 string* split(const string &input){
     
-    string* words = new string[5];
+    string* words = new string[10];
     int counter;
 
     string word = "";
